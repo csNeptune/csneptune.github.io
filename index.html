@@ -2,7 +2,14 @@
 <html>
 <head>
   <title>chromestar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     html, body {
       height: 100%;
       margin: 0;
@@ -11,6 +18,8 @@
 
     body {
       display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
       background: url('back.png') repeat;
       background-size: 101%;
       color: #FFFFFF;
@@ -20,7 +29,8 @@
 
     .sidebar {
       width: 200px;
-      background-color: rgba(0, 0, 0, 0.6);
+      min-width: 200px;
+      background-color: rgba(0, 0, 0, 0.8);
       padding: 20px;
       border-right: 2px solid #00FFFF;
       display: flex;
@@ -66,35 +76,93 @@
     }
 
     .header img {
-      width: 30%;
+      width: 100%;
+      max-width: 500px;
       height: auto;
     }
 
     .star {
       text-align: center;
-      padding: 20px 0;
-    }
-
-    .star img {
-      width: 25%;
-      height: auto;
+      padding: 20px;
     }
 
     .content {
       background-color: rgba(0, 0, 0, 0.8);
       margin: 0 auto 40px auto;
       padding: 20px;
-      width: 80%;
+      width: 100%;
+      max-width: 700px;
       border: 2px dashed #00FFFF;
+    }
 
+    .content2 {
+      background-color: rgba(0, 0, 0, 0.8);
+      margin: 0 auto 40px auto;
+      padding: 40px;
+      width: 100%;
+      max-width: 700px;
+      border: 2px dashed #00FFFF;
+    }
+    #star-img {
+      width: 100%;
+      max-width: 400px;
+      pointer-events: auto;
+      cursor: pointer;
     }
 
     b {
       font-size: 14pt;
     }
 
-    p {
-      text-indent: 0px;
+    .shaky {
+      display: inline-block;
+    }
+
+    .shake-start .shaky {
+      animation: shake 0.3s infinite;
+    }
+
+    @keyframes shake {
+      0%   { transform: translate(0px, 0px) rotate(0deg); }
+      25%  { transform: translate(1px, -1px) rotate(-1deg); }
+      50%  { transform: translate(-1px, 1px) rotate(1deg); }
+      75%  { transform: translate(1px, 1px) rotate(0deg); }
+      100% { transform: translate(0px, 0px) rotate(0deg); }
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .spin {
+      animation: spin 2s linear infinite;
+    }
+
+    /* Mobile styles */
+    @media (max-width: 768px) {
+      body {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        height: auto;
+        border-right: none;
+        border-bottom: 2px solid #00FFFF;
+      }
+
+      .sidebar-item {
+        flex: 1 1 30%;
+        margin-bottom: 10px;
+        justify-content: center;
+      }
+
+      .main {
+        height: auto;
+      }
     }
   </style>
 </head>
@@ -103,15 +171,19 @@
   <div class="sidebar">
     <div class="sidebar-item">
       <img src="icon1.png" alt="Chromestar Icon">
-      <a href="chromestar.html">home</a>
+      <a href="index.html">home</a>
     </div>
     <div class="sidebar-item">
-      <img src="icon2.png" alt="Digital Sounds Icon">
+      <img src="icon2.png" alt="Digital Sound Icon">
       <a href="digital-sounds.html">digital sounds</a>
     </div>
     <div class="sidebar-item">
       <img src="icon3.png" alt="Serotonin Icon">
       <a href="serotonin.html">serotonin</a>
+    </div>
+    <div class="sidebar-item">
+      <img src="icon4.png" alt="Dream Journal Icon">
+      <a href="dream-journal.html">dream journal</a>
     </div>
   </div>
 
@@ -119,34 +191,46 @@
     <div class="header">
       <img src="header.png" alt="Chromestar Logo">
     </div>
+
     <div class="content">
       <b>Welcome To Your Promised Future!</b>
       <p>You probably don't know me, so let me introduce myself. I'm chromestar, founder of Digital Sounds. I'm an indie artist based in DeLand, Florida and I dream of being the next big thing through pushing the boundaries of what music can be. Music is not just something you hear, but something you experience, feel, and live by. Join me in my journey for free and watch chrome become a star :O.</p>
     </div>
-    <div class="content">
- 	   <div class="star">
-  	    <img src="star.png" alt="star" style="cursor: pointer;" onclick="startMusic()">
-  	  </div>
+
+    <div class="content2">
+      <div class="star">
+        <img id="star-img" src="star.png" alt="star" onclick="startMusicAndSpin()">
+      </div>
     </div>
   </div>
-<audio id="bg-music" src="anorexia13.mp3" loop></audio>
+
+  <audio id="bg-music" src="anorexia13.mp3" loop></audio>
+
+  <script>
+    function wrapCharacters(node) {
+      if (node.nodeType === Node.TEXT_NODE && node.textContent.trim() !== '') {
+        const frag = document.createDocumentFragment();
+        for (let char of node.textContent) {
+          const span = document.createElement('span');
+          span.classList.add('shaky');
+          span.textContent = char;
+          frag.appendChild(span);
+        }
+        node.replaceWith(frag);
+      } else if (node.nodeType === Node.ELEMENT_NODE) {
+        [...node.childNodes].forEach(child => wrapCharacters(child));
+      }
+    }
+
+    function startMusicAndSpin() {
+      const star = document.getElementById('star-img');
+      const music = document.getElementById('bg-music');
+
+      if (!star.classList.contains('spin')) {
+        music.play();
+        star.classList.add('spin');
+      }
+    }
+  </script>
 </body>
-
-<script>
-function startMusic() {
-  const audio = document.getElementById('bg-music');
-  if (audio.paused) {
-    audio.play().catch(() => {});
-  }
-}
-</script>
-
-
-
-
-
-
-
-
-
 </html>
