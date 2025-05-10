@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chromestar</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      display: flex;
+      background: url('back.png') repeat;
+      background-size: 101%;
+      color: #FFFFFF;
+      font-family: "Comic Sans MS", "Comic Sans", cursive;
+      font-size: 12pt;
+    }
+
+    .sidebar {
+      width: 200px;
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      border-right: 2px solid #00FFFF;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      height: 100vh;
+      box-sizing: border-box;
+    }
+
+    .sidebar-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .sidebar-item img {
+      width: 32px;
+      height: 32px;
+      margin-right: 10px;
+    }
+
+    .sidebar-item a {
+      color: #00FFFF;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .sidebar-item a:hover {
+      text-decoration: underline;
+    }
+
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      overflow-y: auto;
+    }
+
+    .header {
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    .header img {
+      width: 30%;
+      height: auto;
+    }
+
+    .star {
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    .star img {
+      width: 25%;
+      height: auto;
+    }
+
+    .content {
+      background-color: rgba(0, 0, 0, 0.8);
+      margin: 0 auto 40px auto;
+      padding: 20px;
+      width: 80%;
+      border: 2px dashed #00FFFF;
+
+    }
+
+    b {
+      font-size: 14pt;
+    }
+
+    p {
+      text-indent: 0px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="sidebar">
+    <div class="sidebar-item">
+      <img src="icon1.png" alt="Chromestar Icon">
+      <a href="chromestar.html">home</a>
+    </div>
+    <div class="sidebar-item">
+      <img src="icon2.png" alt="Digital Sounds Icon">
+      <a href="digital-sounds.html">digital sounds</a>
+    </div>
+    <div class="sidebar-item">
+      <img src="icon3.png" alt="Serotonin Icon">
+      <a href="serotonin.html">serotonin</a>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="header">
+      <img src="header.png" alt="Chromestar Logo">
+    </div>
+    <div class="content">
+      <b>Welcome To Your Promised Future!</b>
+      <p>You probably don't know me, so let me introduce myself. I'm chromestar, founder of Digital Sounds. I'm an indie artist based in DeLand, Florida and I dream of being the next big thing through pushing the boundaries of what music can be. Music is not just something you hear, but something you experience, feel, and live by. Join me in my journey for free and watch chrome become a star :O.</p>
+    </div>
+    <div class="content">
+ 	   <div class="star">
+  	    <img src="star.png" alt="star" style="cursor: pointer;" onclick="startMusic()">
+  	  </div>
+    </div>
+  </div>
+<audio id="bg-music" src="anorexia13.mp3" loop></audio>
+</body>
+
+<script>
+function startMusic() {
+  const audio = document.getElementById('bg-music');
+  if (audio.paused) {
+    audio.play().catch(() => {});
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+</html>
