@@ -4,21 +4,28 @@
   <title>chromestar</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     html, body {
       height: 100%;
       margin: 0;
       padding: 0;
     }
 
-body {
-  display: flex;
-  flex-wrap: wrap;
-  background: url('back.png') repeat;
-  background-size: 101%;
-  color: #FFFFFF;
-  font-family: "Comic Sans MS", "Comic Sans", cursive;
-  font-size: 12pt;
-}
+    body {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      background: url('back.png') repeat;
+      background-size: 101%;
+      color: #FFFFFF;
+      font-family: "Comic Sans MS", "Comic Sans", cursive;
+      font-size: 12pt;
+    }
 
     .sidebar {
       width: 200px;
@@ -68,27 +75,23 @@ body {
       padding: 20px 0;
     }
 
-.header img {
-  width: 100%;
-  max-width: 500px;
-  height: auto;
-}
+    .header img {
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+    }
 
     .content {
       background-color: rgba(0, 0, 0, 0.8);
       margin: 0 auto 40px auto;
       padding: 20px;
-  width: 100%;
-  max-width: 700px;
+      width: 100%;
+      max-width: 700px;
       border: 2px dashed #00FFFF;
     }
 
     b {
       font-size: 14pt;
-    }
-
-    p {
-      text-indent: 0px;
     }
 
     iframe {
@@ -99,7 +102,13 @@ body {
       border: none;
     }
 
-    /* Mobile styles */
+    .entry-link, .back {
+      color: #00FFFF;
+      text-decoration: underline;
+      margin: 10px 0;
+      display: inline-block;
+    }
+
     @media (max-width: 768px) {
       body {
         flex-direction: column;
@@ -155,12 +164,10 @@ body {
     <div class="content">
       <b>The Future Of Music</b>
       <p>Digital Sounds strives to be more than just a label. We are a community that helps shape new artists into becoming something even greater. As the founder of Digital Sounds, I strive to bring together artists in Central Florida to work together and become the future of music. Not for money, not for fame, but for art.</p>
-
-      <iframe 
-        src="https://open.spotify.com/embed/album/0UOmu5OHofJukepj6uvNCv?utm_source=generator&theme=0" 
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-        loading="lazy">
-      </iframe>
+    </div>
+   
+    <div class="content">
+      <iframe src="https://open.spotify.com/embed/album/0UOmu5OHofJukepj6uvNCv?utm_source=generator&theme=0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
     </div>
   </div>
 
