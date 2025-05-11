@@ -4,21 +4,28 @@
   <title>chromestar</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     html, body {
       height: 100%;
       margin: 0;
       padding: 0;
     }
 
-body {
-  display: flex;
-  flex-wrap: wrap;
-  background: url('back.png') repeat;
-  background-size: 101%;
-  color: #FFFFFF;
-  font-family: "Comic Sans MS", "Comic Sans", cursive;
-  font-size: 12pt;
-}
+    body {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      background: url('back.png') repeat;
+      background-size: 101%;
+      color: #FFFFFF;
+      font-family: "Comic Sans MS", "Comic Sans", cursive;
+      font-size: 12pt;
+    }
 
     .sidebar {
       width: 200px;
@@ -87,10 +94,6 @@ body {
       font-size: 14pt;
     }
 
-    p {
-      text-indent: 0px;
-    }
-
     iframe {
       border-radius: 12px;
       margin-top: 30px;
@@ -99,27 +102,6 @@ body {
       border: none;
     }
 
-    @media (max-width: 768px) {
-      body {
-        flex-direction: column;
-      }
-
-      .sidebar {
-        width: 100%;
-        height: auto;
-        border-right: none;
-        border-bottom: 2px solid #00FFFF;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-
-      .sidebar-item {
-        flex: 1 1 30%;
-        justify-content: center;
-      }
-    }
-    /* Mobile styles */
     @media (max-width: 768px) {
       body {
         flex-direction: column;
@@ -175,13 +157,11 @@ body {
     <div class="content">
       <b>OMG! Tell me more about Serotonin!</b>
       <p>Serotonin is my debut EP, featuring the stories of life and death. I love rave culture, it means a lot to me - but that comes with danger. I wanted to capture that, not with lyrics, but with sound design and experimental story-telling.</p>
-
-
     </div>
-  <div class="main">
-    <div class="content">
-<iframe style="border-radius:12px" src="https://open.spotify.com/embed/album/0hzYv428DJUeurEslmlUYY?utm_source=generator" width="50%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 
+    <div class="content">
+      <iframe src="https://open.spotify.com/embed/album/0hzYv428DJUeurEslmlUYY?utm_source=generator" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
   </div>
 
 </body>
