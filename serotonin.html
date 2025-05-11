@@ -98,6 +98,33 @@ body {
       height: 354px;
       border: none;
     }
+
+    @media (max-width: 768px) {
+      body {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 2px solid #00FFFF;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .sidebar-item {
+        flex: 1 1 30%;
+        justify-content: center;
+      }
+    }
+    /* Mobile styles */
+    @media (max-width: 768px) {
+      body {
+        flex-direction: column;
+      }
+
       .sidebar {
         width: 100%;
         flex-direction: row;
